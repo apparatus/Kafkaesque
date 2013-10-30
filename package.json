@@ -1,0 +1,39 @@
+{
+  "name": "node-kafka-client",
+  "description": "A node client for kafka",
+  "keywords": [
+    "kafka",
+    "client"
+  ],
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Peter Elger (http://www.nearform.com/)",
+  "contributors": [
+    "Peter Elger <elger.peter@gmail.com> (http://peterelger.com/)",
+    "Richard Rodger <richard@ricebridge.com> (http://richardrodger.com/)"
+  ],
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "underscore": "~1.4.2",
+    "buffy": "0.0.5",
+    "buffer-builder": "~0.1.0"
+  },
+  "main": "lib/main",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pelger/node-kafka-client.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "load-grunt-tasks": "~0.1.0",
+    "chai": "~1.8.1",
+    "matchdep": "~0.3.0",
+    "mocha": "~1.13.0",
+    "grunt-mocha-test": "~0.7.0",
+    "grunt-mocha-cov": "0.0.7",
+    "hexy": "~0.2.5"
+  }
+}
