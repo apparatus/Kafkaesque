@@ -1,3 +1,5 @@
-# microbial
+# kafkaesque
 
-## A Node.js micro services toolkit
+## A Node.js Kafka client
+
+Experimental!
