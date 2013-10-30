@@ -21,14 +21,14 @@ module.exports = function (grunt) {
         options: {
           reporter: 'spec'
         },
-        src: ['test/**/*Test.js']
+        src: ['test/unit/**/*Test.js']
       }
     },
     mochacov: {
       options: {
         reporter: 'html-cov'
       },
-      all: ['test/**/*.js']
+      all: ['test/unit/**/*.js']
     }
   });
 

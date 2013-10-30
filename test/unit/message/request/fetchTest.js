@@ -37,14 +37,11 @@ describe('fetch test', function(){
                    .offset(200)
                    .maxBytes(2000);
 
-
-    console.log(hexy.hexy(msg));
-
-    var expected = '00000000: 0001 0000 ffff ffff ffff ffff 0000 04d2  ...............R\n' +
-                   '00000010: 000a 4d72 2046 6c69 6262 6c65 0000 03e8  ..Mr.Flibble...h\n' +
-                   '00000020: 0000 03e8 0000 0001 000f 4f77 6c20 7465  ...h......Owl.te\n' +
-                   '00000030: 7373 656c 6174 696f 6e00 0000 0100 0000  sselation.......\n' +
-                   '00000040: 0100 0000 0000 0000 c800 0007 d0         ........H...P\n';
+    var expected = '00000000: 0001 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
+                   '00000010: 6262 6c65 ffff ffff 0000 03e8 0000 03e8  bble.......h...h\n' +
+                   '00000020: 0000 0001 000f 4f77 6c20 7465 7373 656c  ......Owl.tessel\n' +
+                   '00000030: 6174 696f 6e00 0000 0100 0000 0100 0000  ation...........\n' +
+                   '00000040: 0000 0000 c800 0007 d0                   ....H...P\n';
 
     assert.equal(hexy.hexy(msg), expected);
     done();

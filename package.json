@@ -1,5 +1,5 @@
 {
-  "name": "node-kafka-client",
+  "name": "kafkaesque",
   "description": "A node client for kafka",
   "keywords": [
     "kafka",
@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "underscore": "~1.4.2",
-    "buffy": "0.0.5",
-    "buffer-builder": "~0.1.0"
+    "buffer-builder": "~0.1.0",
+    "buffer-crc32": "~0.2.1"
   },
   "main": "lib/main",
   "repository": {
