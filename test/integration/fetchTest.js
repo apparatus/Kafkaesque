@@ -21,7 +21,6 @@ var client;
 describe('fetch test', function(){
 
   beforeEach(function(done) {
-    this.timeout(1000000);
     var options = {
       host: 'localhost',
       port: 9092,
@@ -37,8 +36,7 @@ describe('fetch test', function(){
 
 
   it('should connect to Kafka and execute a fetch request', function(done){
-    this.timeout(1000000);
-    client.fetch({topic: 'testing', partition: 0, offset: 0, maxWait: 0, minBytes: 2000000}, function(err, response) {
+    client.fetch({topic: 'testing', partition: 0, offset: 0, maxWait: 0, minBytes: 0}, function(err, response) {
       console.dir(response);
       assert(null === err);
       assert.equal(response.topic, 'testing');

@@ -36,26 +36,11 @@ describe('metadata test', function(){
 
 
   it('should connect to Kafka and execute a metadata request', function(done){
-    this.timeout(1000000);
-    client.metadata(['test'], function(response) {
-      console.log(response);
+    client.metadata(['testing', 'test'], function(err, response) {
+      assert(null === err);
+      console.log(JSON.stringify(response, null, 2));
       done();
     });
-
-    /*
-    // validate length
-    assert.equal(msg.readUInt32BE(0), msg.length - 4);
-
-    // validate correlation code
-    assert.equal(msg.readUInt32BE(8), 1234);
-
-    // validate topic count
-    assert.equal(msg.readUInt32BE(24), 2);
-
-    // validate last topic name
-    assert.equal(msg.toString('utf8', 38, 42), 'fish');
-    */
-
   });
 });
 

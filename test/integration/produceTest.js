@@ -21,7 +21,6 @@ var client;
 describe('produce test', function(){
 
   beforeEach(function(done) {
-    this.timeout(1000000);
     var options = {
       host: 'localhost',
       port: 9092,
@@ -36,7 +35,6 @@ describe('produce test', function(){
 
 
   it('should connect to Kafka and execute a produce request', function(done){
-    this.timeout(1000000);
     client.produce({topic: 'testing', partition: 0}, ['wotcher mush', 'orwlight geezer'], function(err, response) {
       assert(null === err);
       assert.equal(response.topic, 'testing');
