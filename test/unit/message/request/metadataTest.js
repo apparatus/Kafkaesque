@@ -31,7 +31,8 @@ describe('metadata test', function(){
     var msg = meta.encode()
                   .correlation(1234)
                   .client('Mr Flibble')
-                  .topics(['wibble', 'fish']);
+                  .topics(['wibble', 'fish'])
+                  .end();
 
     var expected = '00000000: 0003 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
                    '00000010: 6262 6c65 0000 0002 0006 7769 6262 6c65  bble......wibble\n' +
@@ -46,7 +47,8 @@ describe('metadata test', function(){
     var msg = envelope(meta.encode()
                            .correlation(1234)
                            .client('Mr Flibble')
-                           .topics(['wibble', 'fish']));
+                           .topics(['wibble', 'fish'])
+                           .end());
 
     var expected = '00000000: 0000 0026 0003 0000 0000 04d2 000a 4d72  ...&.......R..Mr\n' +
                    '00000010: 2046 6c69 6262 6c65 0000 0002 0006 7769  .Flibble......wi\n' +

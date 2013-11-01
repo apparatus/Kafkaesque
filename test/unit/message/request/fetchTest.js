@@ -35,7 +35,8 @@ describe('fetch test', function(){
                    .topic('Owl tesselation')
                    .partition(1)
                    .offset(200)
-                   .maxBytes(2000);
+                   .maxBytes(2000)
+                   .end();
 
     var expected = '00000000: 0001 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
                    '00000010: 6262 6c65 ffff ffff 0000 03e8 0000 03e8  bble.......h...h\n' +

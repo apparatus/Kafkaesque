@@ -14,48 +14,33 @@
 
 'use strict';
 
-var common = require('./common');
+var assert  = require('chai').assert;
+var client;
 
 
+describe('offset test', function(){
 
-var maxWait = function(timeInMs) {
-  this.buf.appendUInt32BE(0xffffffff);  // replica id
-  this.buf.appendUInt32BE(timeInMs);
-  return this;
-};
-
-
-
-var minBytes = function(bytes) {
-  this.buf.appendUInt32BE(bytes);
-  return this;
-};
-
-
-
-var offset = function(offsetLow, offsetHigh) {
-  this.buf.appendUInt32BE(offsetHigh);
-  this.buf.appendUInt32BE(offsetLow);
-  return this;
-};
+  beforeEach(function(done) {
+    var options = {
+      host: 'localhost',
+      port: 9092,
+      clientId: 'fish'
+    };
+    client = require('../../lib/main')(options);
+    client.tearUp(function(err) {
+      console.log(err);
+      done();
+    });
+  });
 
 
-
-var maxBytes = function(bytes) {
-  this.buf.appendUInt32BE(bytes);
-  return this;
-};
-
-
-
-exports.encode = function() {
-  var ret = common.encode(common.FETCH_API);
-
-  ret.maxWait = maxWait;
-  ret.minBytes = minBytes;
-  ret.offset = offset;
-  ret.maxBytes = maxBytes;
-  return ret;
-};
+  it('should connect to Kafka and execute an offset request', function(done){
+    client.offset({group: 'ni', topic: 'testing', partition: 0}, function(err, response) {
+      assert(null === err);
+      console.log(JSON.stringify(response));
+      done();
+    });
+  });
+});
 
 

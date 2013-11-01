@@ -35,7 +35,8 @@ describe('produce test', function(){
                      .partition(1)
                      .messages([{key: '', value: 'Mr Flibble'},
                                 {key: '', value: 'Fish/Cheese'},
-                                {key: '', value: 'Cheese/Fish'}]);
+                                {key: '', value: 'Cheese/Fish'}])
+                     .end();
 
     var expected = '00000000: 0000 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
                    '00000010: 6262 6c65 0001 0000 07d0 0000 0001 0004  bble.....P......\n' +
@@ -60,7 +61,8 @@ describe('produce test', function(){
                      .timeout()
                      .topic('test')
                      .partition(1)
-                     .messages('oscilating badgers');
+                     .messages('oscilating badgers')
+                     .end();
 
     var expected = '00000000: 0000 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
                    '00000010: 6262 6c65 0001 0000 07d0 0000 0001 0004  bble.....P......\n' +
