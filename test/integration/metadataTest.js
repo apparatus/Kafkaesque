@@ -27,7 +27,7 @@ describe('metadata test', function(){
       port: 9092,
       clientId: 'fish'
     };
-    client = require('../../lib/main')(options);
+    client = require('../../lib/api')(options);
     client.tearUp(function(err) {
       console.log(err);
       done();
@@ -36,7 +36,7 @@ describe('metadata test', function(){
 
 
   it('should connect to Kafka and execute a metadata request', function(done){
-    client.metadata(['testing', 'test'], function(err, response) {
+    client.metadata(['repltest'], function(err, response) {
       assert(null === err);
       console.log(JSON.stringify(response, null, 2));
       done();

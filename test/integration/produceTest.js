@@ -26,7 +26,7 @@ describe('produce test', function(){
       port: 9092,
       clientId: 'fish'
     };
-    client = require('../../lib/main')(options);
+    client = require('../../lib/api')(options);
     client.tearUp(function(err) {
       console.log(err);
       done();

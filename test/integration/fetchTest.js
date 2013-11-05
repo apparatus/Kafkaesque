@@ -27,7 +27,7 @@ describe('fetch test', function(){
       clientId: 'fish',
       maxBytes: 2000000
     };
-    client = require('../../lib/main')(options);
+    client = require('../../lib/api')(options);
     client.tearUp(function(err) {
       console.log(err);
       done();
