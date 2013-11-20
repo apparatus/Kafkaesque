@@ -124,5 +124,5 @@ Will consume messages from the testing topic. Note that the consume stores its p
     *   minBytes - the minimum bytes that should be available before returning, if unspecified defaults to 50 bytes
 
 ## Support
-I really hope that this code is useful, please feel free to get in touch if you need help or support: @pelger
+Hope that this code is useful, please feel free to get in touch if you need help or support: @pelger
 

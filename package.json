@@ -5,7 +5,7 @@
     "kafka",
     "client"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "Peter Elger (http://www.nearform.com/)",
   "contributors": [
@@ -18,7 +18,8 @@
   "dependencies": {
     "underscore": "~1.4.2",
     "buffer-builder": "~0.1.0",
-    "buffer-crc32": "~0.2.1"
+    "buffer-crc32": "~0.2.1",
+    "hexy": "~0.2.5"
   },
   "main": "lib/main",
   "repository": {
@@ -33,7 +34,6 @@
     "matchdep": "~0.3.0",
     "mocha": "~1.13.0",
     "grunt-mocha-test": "~0.7.0",
-    "grunt-mocha-cov": "0.0.7",
-    "hexy": "~0.2.5"
+    "grunt-mocha-cov": "0.0.7"
   }
 }
