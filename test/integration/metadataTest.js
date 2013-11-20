@@ -24,7 +24,7 @@ describe('metadata test', function(){
     this.timeout(1000000);
     var options = {
       host: 'localhost',
-      port: 9092,
+      port: 9094,
       clientId: 'fish'
     };
     client = require('../../lib/api')(options);
@@ -36,7 +36,7 @@ describe('metadata test', function(){
 
 
   it('should connect to Kafka and execute a metadata request', function(done){
-    client.metadata(['repltest'], function(err, response) {
+    client.metadata(['repltest', 'testing', 'split'], function(err, response) {
       assert(null === err);
       console.log(JSON.stringify(response, null, 2));
       done();

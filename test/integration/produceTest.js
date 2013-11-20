@@ -17,6 +17,13 @@
 var assert  = require('chai').assert;
 var client;
 
+/*
+ * not leader error
+ *
+00000000: 0000 0023 1d3d bd15 0000 0001 0007 7465  ...#.==.......te
+00000010: 7374 696e 6700 0000 0100 0000 0000 03ff  sting...........
+00000020: ffff ffff ffff ff                        .......
+*/
 
 describe('produce test', function(){
 
@@ -35,10 +42,31 @@ describe('produce test', function(){
 
 
   it('should connect to Kafka and execute a produce request', function(done){
-    client.produce({topic: 'testing', partition: 0}, ['wotcher mush', 'orwlight geezer'], function(err, response) {
-      assert(null === err);
-      assert.equal(response.topic, 'testing');
-      done();
+    client.produce({topic: 'testing', partition: 0}, ['wotcher mush',
+                                                      'orwlight geezer',
+                                                      'orwlight geezer',
+                                                      'orwlight geezer',
+                                                      'orwlight geezer',
+                                                      'orwlight geezer',
+                                                      'orwlight geezer',
+                                                      'orwlight geezer',
+                                                      'orwlight geezer',
+                                                      'ow do chap'], function(err, response) {
+/*      client.produce({topic: 'testing', partition: 0}, ['wotcher mush',
+                                                        'orwlight geezer',
+                                                        'orwlight geezer',
+                                                        'orwlight geezer',
+                                                        'orwlight geezer',
+                                                        'orwlight geezer',
+                                                        'orwlight geezer',
+                                                        'orwlight geezer',
+                                                        'orwlight geezer',
+                                                        'ow do chap'], function(err, response) {
+                                                        */
+        assert(null === err);
+        assert.equal(response.topic, 'testing');
+        done();
+     // });
     });
   });
 });
