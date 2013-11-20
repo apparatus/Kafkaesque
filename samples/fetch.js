@@ -6,6 +6,7 @@ var kafkaesque = require('../lib/kafkaesque')({brokers: [{host: 'localhost', por
                                                maxBytes: 2000000});
 kafkaesque.tearUp(function() {
   kafkaesque.poll({topic: 'testing', partition: 0}, function(err, kafka) {
+    console.log(err);
 
     kafka.on('message', function(message, commit) {
       console.log(JSON.stringify(message));

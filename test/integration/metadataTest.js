@@ -36,7 +36,8 @@ describe('metadata test', function(){
 
 
   it('should connect to Kafka and execute a metadata request', function(done){
-    client.metadata(['repltest', 'testing', 'split'], function(err, response) {
+    //client.metadata(['repltest', 'testing', 'split', 'fish', 'cheese'], function(err, response) {
+    client.metadata(['testing'], function(err, response) {
       assert(null === err);
       console.log(JSON.stringify(response, null, 2));
       done();
