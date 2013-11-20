@@ -2,10 +2,12 @@
   "name": "kafkaesque",
   "description": "A node client for kafka",
   "keywords": [
+    "apache",
     "kafka",
-    "client"
+    "client",
+    "0.8"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": "Peter Elger (http://www.nearform.com/)",
   "contributors": [
