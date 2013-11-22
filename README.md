@@ -3,12 +3,12 @@
 ## A Node.js Kafka client
 kafkaesque is a node.js client for Apache Kafka supporting upwards of v0.8 of the Kafka protocol only. Kafkaesque does not require any connection to zookeeper, rather it uses the kafka metadata protocol request to determine how it should best connect to the cluster. You need only provide Kafkaesque with the details of a single broker in any Kafka cluster and it will figure out the rest.
 
-The current 0.8 release of Kafka does not appear to support the full protocol set as described here: [https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol](). Specifically the offset/commit/fetch API. The full version is supported in the current kafka sources available here: [https://github.com/apache/kafka]().
+The current 0.8 release of Kafka does not appear to support the full protocol set as described here: [https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol). Specifically the offset/commit/fetch API. The full version is supported in the current kafka sources available here: [https://github.com/apache/kafka](https://github.com/apache/kafka).
 
 Kafkaesque uses this API as opposed to reading meta commit information from zookeeper. To use Kafkaesque right now you will need to build Kafka from source.
 
 ## Prerequisites
-You will need to install Apache Kafka from source. Pull the main branch from [https://github.com/apache/kafka]() and follow the instructions in the README.
+You will need to install Apache Kafka from source. Pull the main branch from [https://github.com/apache/kafka](https://github.com/apache/kafka) and follow the instructions in the README.
 
 ## Installation
 
