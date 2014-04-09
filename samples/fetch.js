@@ -2,10 +2,10 @@
 
 
 var kafkaesque = require('../lib/kafkaesque')({brokers: [{host: 'localhost', port: 9092}],
-                                               clientId: 'fish',
                                                maxBytes: 2000000});
 kafkaesque.tearUp(function() {
-  kafkaesque.poll({topic: 'testing', partition: 0}, function(err, kafka) {
+  //kafkaesque.poll({topic: 'testing123', partition: 2}, function(err, kafka) {
+  kafkaesque.poll({topic: 'request', partition: 0}, function(err, kafka) {
     console.log(err);
 
     kafka.on('message', function(message, commit) {

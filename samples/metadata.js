@@ -4,7 +4,7 @@ var kafkaesque = require('../lib/kafkaesque')({brokers: [{host: 'localhost', por
                                                clientId: 'fish',
                                                maxBytes: 2000000});
 kafkaesque.tearUp(function() {
-  kafkaesque.metadata({topic: 'testing'}, function(err, metadata) {
+  kafkaesque.metadata({topic: 'testing123'}, function(err, metadata) {
     console.log(err);
     console.log(JSON.stringify(metadata, null, 2));
     kafkaesque.tearDown();

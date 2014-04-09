@@ -30,7 +30,7 @@ describe('produce test', function(){
   beforeEach(function(done) {
     var options = {
       host: 'localhost',
-      port: 9094,
+      port: 9092,
       clientId: 'fish'
     };
     client = require('../../lib/api')(options);
@@ -52,21 +52,9 @@ describe('produce test', function(){
                                                       'orwlight geezer',
                                                       'orwlight geezer',
                                                       'ow do chap'], function(err, response) {
-/*      client.produce({topic: 'testing', partition: 0}, ['wotcher mush',
-                                                        'orwlight geezer',
-                                                        'orwlight geezer',
-                                                        'orwlight geezer',
-                                                        'orwlight geezer',
-                                                        'orwlight geezer',
-                                                        'orwlight geezer',
-                                                        'orwlight geezer',
-                                                        'orwlight geezer',
-                                                        'ow do chap'], function(err, response) {
-                                                        */
-        assert(null === err);
-        assert.equal(response.topic, 'testing');
-        done();
-     // });
+      assert(null === err);
+      assert.equal(response.topic, 'testing');
+      done();
     });
   });
 });

@@ -23,7 +23,7 @@ describe('offset test', function(){
   beforeEach(function(done) {
     var options = {
       host: 'localhost',
-      port: 9094,
+      port: 9092,
       clientId: 'fish'
     };
     client = require('../../lib/api')(options);

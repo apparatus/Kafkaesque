@@ -21,6 +21,7 @@ var client;
 describe('commit test', function(){
 
   beforeEach(function(done) {
+    this.timeout(1000000);
     var options = {
       host: 'localhost',
       port: 9092,
@@ -35,7 +36,9 @@ describe('commit test', function(){
 
 
   it('should connect to Kafka and execute a commit request', function(done){
-    client.commit({group: 'ni', topic: 'testing', partition: 0, 'offset': 5}, function(err, response) {
+    this.timeout(1000000);
+    client.commit({group: 'ni', topic: 'testing', partition: 0, offset: 5}, function(err, response) {
+      console.log(err);
       assert(null === err);
       console.log(JSON.stringify(response));
       done();

@@ -23,7 +23,7 @@ describe('fetch test', function(){
   beforeEach(function(done) {
     var options = {
       host: 'localhost',
-      port: 9094,
+      port: 9092,
       clientId: 'fish',
       maxBytes: 2000000
     };
