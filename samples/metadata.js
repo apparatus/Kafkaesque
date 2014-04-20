@@ -2,6 +2,7 @@
 
 var kafkaesque = require('../lib/kafkaesque')({brokers: [{host: 'localhost', port: 9092}],
                                                clientId: 'fish',
+                                               group: 'wtf',
                                                maxBytes: 2000000});
 kafkaesque.tearUp(function() {
   kafkaesque.metadata({topic: 'testing123'}, function(err, metadata) {
