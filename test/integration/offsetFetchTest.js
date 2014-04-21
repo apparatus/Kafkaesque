@@ -14,18 +14,17 @@
 
 'use strict';
 
-var assert  = require('chai').assert;
+//var assert  = require('chai').assert;
 var client;
 
 
-describe('fetch test', function(){
+describe('offset test', function(){
 
   beforeEach(function(done) {
     var options = {
       host: 'localhost',
       port: 9092,
-      clientId: 'fish',
-      maxBytes: 2000000
+      clientId: 'fish'
     };
     client = require('../../lib/api')(options);
     client.tearUp(function(err) {
@@ -35,11 +34,10 @@ describe('fetch test', function(){
   });
 
 
-  it('should connect to Kafka and execute a fetch request', function(done){
-    client.fetch({topic: 'testing123', partition: 0, offset: 0, maxWait: 0, minBytes: 0}, function(err, response) {
-      console.dir(response);
-      assert(null === err);
-      assert.equal(response.topic, 'testing123');
+  it('should connect to Kafka and execute an offset request', function(done){
+    client.offsetFetch({group: 'ni', topic: 'testing123', partition: 0}, function(err, response) {
+      //assert(null === err);
+      console.log(JSON.stringify(response));
       done();
     });
   });
