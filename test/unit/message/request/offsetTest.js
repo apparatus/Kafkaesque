@@ -15,7 +15,7 @@
 'use strict';
 
 var assert  = require('chai').assert;
-var offset = require('../../../../lib/message/request/offset');
+var offset = require('../../../../lib/message/request/offsetFetch');
 var hexy = require('hexy');
 
 
@@ -35,7 +35,6 @@ describe('offset test', function(){
                     .partition(0)
                     .end();
 
-    //var expected = '00000000: 0008 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
     var expected = '00000000: 0009 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
                    '00000010: 6262 6c65 0009 4d6f 746f 7268 6561 6400  bble..Motorhead.\n' +
                    '00000020: 0000 0100 1076 6f6c 652d 6672 6f62 756c  .....vole-frobul\n' +

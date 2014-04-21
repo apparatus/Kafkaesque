@@ -36,7 +36,7 @@ describe('fetch test', function(){
 
 
   it('should connect to Kafka and execute a fetch request', function(done){
-    client.fetch({topic: 'testing', partition: 0, offset: 0, maxWait: 0, minBytes: 0}, function(err, response) {
+    client.fetch({topic: 'testing123', partition: 0, offset: 0, maxWait: 0, minBytes: 0}, function(err, response) {
       console.dir(response);
       assert(null === err);
       assert.equal(response.topic, 'testing');

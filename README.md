@@ -7,6 +7,9 @@ The current 0.8 release of Kafka does not appear to support the full protocol se
 
 Kafkaesque uses this API as opposed to reading meta commit information from zookeeper. To use Kafkaesque right now you will need to build Kafka from source.
 
+## Note
+Kafkaesque has an implementation for the offset fetch/commit API, this is not funcitonal in the .8.x Kafka releases. Expected in .9.x release. 
+
 ## Prerequisites
 You will need to install Apache Kafka from source. Pull the main branch from [https://github.com/apache/kafka](https://github.com/apache/kafka) and follow the instructions in the README.
 

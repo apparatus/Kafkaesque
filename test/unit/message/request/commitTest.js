@@ -15,7 +15,7 @@
 'use strict';
 
 var assert  = require('chai').assert;
-var commit = require('../../../../lib/message/request/commit');
+var commit = require('../../../../lib/message/request/offsetCommit');
 var hexy = require('hexy');
 
 
@@ -34,15 +34,17 @@ describe('commit test', function(){
                     .topic('vole-frobulation')
                     .partition(0)
                     .offset(20)
+                    .timestamp()
+                    .commitMetadata()
                     .end();
 
-    var expected = '00000000: 0008 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
-                   '00000010: 6262 6c65 0009 4d6f 746f 7268 6561 6400  bble..Motorhead.\n' +
-                   '00000020: 0000 0100 1076 6f6c 652d 6672 6f62 756c  .....vole-frobul\n' +
-                   '00000030: 6174 696f 6e00 0000 0100 0000 0000 0000  ation...........\n' +
-                   '00000040: 0000 0000 1400 0a6b 6166 6b61 6573 7175  .......kafkaesqu\n' +
-                   '00000050: 65                                       e\n';
-    
+    var expected =  '00000000: 0008 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
+                    '00000010: 6262 6c65 0009 4d6f 746f 7268 6561 6400  bble..Motorhead.\n' +
+                    '00000020: 0000 0100 1076 6f6c 652d 6672 6f62 756c  .....vole-frobul\n' +
+                    '00000030: 6174 696f 6e00 0000 0100 0000 0000 0000  ation...........\n' +
+                    '00000040: 0000 0000 14ff ffff ffff ffff ff00 0a6b  ...............k\n' +
+                    '00000050: 6166 6b61 6573 7175 65                   afkaesque\n';
+
     assert.equal(hexy.hexy(msg), expected);
     done();
   });

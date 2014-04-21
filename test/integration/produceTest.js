@@ -42,7 +42,7 @@ describe('produce test', function(){
 
 
   it('should connect to Kafka and execute a produce request', function(done){
-    client.produce({topic: 'testing', partition: 0}, ['wotcher mush',
+    client.produce({topic: 'testing123', partition: 0}, ['wotcher mush',
                                                       'orwlight geezer',
                                                       'orwlight geezer',
                                                       'orwlight geezer',
@@ -53,7 +53,7 @@ describe('produce test', function(){
                                                       'orwlight geezer',
                                                       'ow do chap'], function(err, response) {
       assert(null === err);
-      assert.equal(response.topic, 'testing');
+      assert.equal(response.topic, 'testing123');
       done();
     });
   });

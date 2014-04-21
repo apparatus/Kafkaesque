@@ -14,7 +14,7 @@
 
 'use strict';
 
-var assert  = require('chai').assert;
+//var assert  = require('chai').assert;
 var client;
 
 
@@ -35,8 +35,8 @@ describe('offset test', function(){
 
 
   it('should connect to Kafka and execute an offset request', function(done){
-    client.offset({group: 'ni', topic: 'testing', partition: 0}, function(err, response) {
-      assert(null === err);
+    client.offsetFetch({group: 'ni', topic: 'testing123', partition: 0}, function(err, response) {
+      //assert(null === err);
       console.log(JSON.stringify(response));
       done();
     });
