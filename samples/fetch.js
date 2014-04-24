@@ -2,15 +2,15 @@
 
 var kafkaesque = require('../lib/kafkaesque')({brokers: [{host: 'localhost', port: 9092}],
                                                clientId: 'fish',
-                                               group: 'wtf',
+                                               group: 'cheese',
                                                maxBytes: 2000000});
 kafkaesque.tearUp(function() {
+  //kafkaesque.poll({topic: 'testing123', partition: 0, offset: 40}, function(err, kafka) {
   kafkaesque.poll({topic: 'testing123', partition: 0}, function(err, kafka) {
     console.log(err);
 
-    kafka.on('message', function(message, commit) {
+    kafka.on('message', function(offset, message, commit) {
       console.log(JSON.stringify(message));
-      console.log('COMMIT');
       commit();
     });
 
@@ -20,4 +20,5 @@ kafkaesque.tearUp(function() {
 
   });
 });
+
 
