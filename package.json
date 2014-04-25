@@ -6,8 +6,9 @@
     "kafka",
     "client",
     "0.8"
+    "0.9"
   ],
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "author": "Peter Elger (http://www.nearform.com/)",
   "contributors": [
