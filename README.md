@@ -11,7 +11,7 @@ Kafkaesque will uses API as opposed to reading meta commit information from zook
 Kafkaesque has an implementation for the offset fetch/commit API, this is not funcitonal in the .8.x Kafka releases. Expected in .9.x release. 
 
 ## Prerequisites
-You will need to install Apache Kafka from source. Pull the main branch from [https://github.com/apache/kafka](https://github.com/apache/kafka) and follow the instructions in the README.
+You will need to install Apache Kafka 0.8.x or greater.
 
 ## Installation
 
@@ -94,7 +94,7 @@ node produce.js
 Will post two messages to the testing topic
 
 ````
-node consume.js
+node fetch.js
 ````
 
 Will consume messages from the testing topic. Note that the consume stores its position in the kafka commit log using the commit/offset/fetch API.
