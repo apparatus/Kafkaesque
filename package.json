@@ -31,13 +31,14 @@
     "url": "https://github.com/pelger/Kafkaesque.git"
   },
   "devDependencies": {
+    "chai": "~1.8.1",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.6.0",
-    "load-grunt-tasks": "~0.1.0",
-    "chai": "~1.8.1",
-    "matchdep": "~0.3.0",
-    "mocha": "~1.13.0",
+    "grunt-mocha-istanbul": "^5.0.1",
     "grunt-mocha-test": "~0.7.0",
-    "grunt-mocha-cov": "0.0.7"
+    "istanbul": "^0.4.3",
+    "load-grunt-tasks": "~0.1.0",
+    "matchdep": "~0.3.0",
+    "mocha": "~1.13.0"
   }
 }

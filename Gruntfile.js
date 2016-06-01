@@ -24,16 +24,20 @@ module.exports = function (grunt) {
         src: ['test/unit/**/*Test.js']
       }
     },
-    mochacov: {
-      options: {
-        reporter: 'html-cov'
-      },
-      all: ['test/unit/**/*.js']
+    'mocha_istanbul': {
+      coverage: {
+        src: 'test/unit', // a folder works nicely
+        options: {
+          mask: '**/*.js'
+        }
+      }
     }
   });
 
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
+
   grunt.registerTask('coverage', [
-    'mochacov'
+    'mocha_istanbul'
   ]);
 
   grunt.registerTask('test', [
@@ -50,4 +54,3 @@ module.exports = function (grunt) {
     'test'
   ]);
 };
-
