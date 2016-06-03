@@ -21,15 +21,17 @@
   "smarttabs": true,
   "globals": {
     "angular": true,
-    "document": true, 
-    "nf": true, 
+    "document": true,
+    "nf": true,
     "$":true,
     "_":true,
     "Highcharts": true,
     "timeseries": true,
     "describe": true,
+    "before": true,
     "beforeEach": true,
     "afterEach": true,
+    "after": true,
     "it": true
   }
 }
