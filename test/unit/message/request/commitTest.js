@@ -44,9 +44,8 @@ describe('commit test', function(){
                     '00000030: 6174 696f 6e00 0000 0100 0000 0000 0000  ation...........\n' +
                     '00000040: 0000 0000 14ff ffff ffff ffff ff00 0a6b  ...............k\n' +
                     '00000050: 6166 6b61 6573 7175 65                   afkaesque\n';
-
+    
     assert.equal(hexy.hexy(msg), expected);
     done();
   });
 });
-
