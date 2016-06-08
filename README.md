@@ -8,7 +8,7 @@ The current 0.8 release of Kafka does not appear to support the full protocol se
 Kafkaesque will uses API as opposed to reading meta commit information from zookeeper when it is full supported in Kafka.
 
 ## Note
-Kafkaesque has an implementation for the offset fetch/commit API, this is not funcitonal in the .8.x Kafka releases. Expected in .9.x release. 
+Kafkaesque has an implementation for the offset fetch/commit API, this is not funcitonal in the .8.x Kafka releases. Expected in .9.x release.
 
 ## Prerequisites
 You will need to install Apache Kafka 0.8.x or greater.
@@ -34,8 +34,8 @@ var kafkaesque = require('kafkaesque')({
 // tearup the client
 kafkaesque.tearUp(function() {
   // send two messages to the testing topic
-  kafkaesque.produce({topic: 'testing', partition: 0}, 
-                     ['wotcher mush', 'orwlight geezer'], 
+  kafkaesque.produce({topic: 'testing', partition: 0},
+                     ['wotcher mush', 'orwlight geezer'],
                      function(err, response) {
     // shutdown connection
     console.log(response);
@@ -58,15 +58,15 @@ var kafkaesque = require('kafkaesque')({
 kafkaesque.tearUp(function() {
   // poll the testing topic, kafakesque will determine the lead broker for this
   // partition / topic pairing and will emit messages as they become available
-  // kafakesque will maintain the read position on the topic based on calls to 
+  // kafakesque will maintain the read position on the topic based on calls to
   // commit()
-  kafkaesque.poll({topic: 'testing', partition: 0}, 
+  kafkaesque.poll({topic: 'testing', partition: 0},
                   function(err, kafka) {
     // handle each message
     kafka.on('message', function(message, commit) {
       console.log(JSON.stringify(message));
-      // once a message has been successfull handled, call commit to advance this 
-      // consumers position in the topic / parition 
+      // once a message has been successfull handled, call commit to advance this
+      // consumers position in the topic / parition
       commit();
     });
     // report errors
@@ -105,7 +105,7 @@ Will consume messages from the testing topic. Note that the consume stores its p
 * Configuration
 	* brokers - array of one or more kafka brokers in the format { host: … , Port: …}
 	* clientId - reference name for this client
-	* maxBytes - the maximum number of bytes to return in any one message 
+	* maxBytes - the maximum number of bytes to return in any one message
 
 * tearUp(cb) - tear up connection to the kafka cluster
 
@@ -114,10 +114,12 @@ Will consume messages from the testing topic. Note that the consume stores its p
 * metadata(params, cb) - return metatdata on a topic
 	* params.topic - the topic name to return metadata on
 
+
 * produce(params, messages, cb) - send messages to kafka
 	* params.topic - the topic name to send to
 	* params.partition - the partition to send to
-	* messages - an array of string or object to send as messages
+	* messages - a string or an array of strings to send
+        `NOTE: objects are not valid input. JSON.stringify() them first`
 
 * poll(params, cb) - LONG poll kafka for messages
 	* params.topic - the topic name, required
@@ -128,4 +130,3 @@ Will consume messages from the testing topic. Note that the consume stores its p
 
 ## Support
 Hope that this code is useful, please feel free to get in touch if you need help or support: @pelger
-
