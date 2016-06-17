@@ -19,7 +19,7 @@ var offset = require('../../../../lib/message/request/offsetFetch');
 var hexy = require('hexy');
 
 
-describe('offset test', function(){
+describe('offset fetch test', function(){
 
   beforeEach(function(done) {
     done();
@@ -43,4 +43,3 @@ describe('offset test', function(){
     done();
   });
 });
-
