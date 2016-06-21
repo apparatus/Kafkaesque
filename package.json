@@ -8,11 +8,12 @@
     "0.8",
     "0.9"
   ],
-  "version": "0.2.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Peter Elger (http://www.nearform.com/)",
   "contributors": [
     "Peter Elger <elger.peter@gmail.com> (http://peterelger.com/)",
+    "Glen Keane <glenkeane.94@gmail.com> (http://glenkeane.me/)",
     "Richard Rodger <richard@ricebridge.com> (http://richardrodger.com/)"
   ],
   "engines": {
