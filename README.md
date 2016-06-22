@@ -1,17 +1,12 @@
-# kafkaesque
+# kafkaesque [![Build Status](https://travis-ci.org/thekemkid/Kafkaesque.svg?branch=group-membership)](https://travis-ci.org/thekemkid/Kafkaesque)
+
+[![NPM](https://nodei.co/npm/kafkaesque.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/kafkaesque/)
 
 ## A Node.js Kafka client
-kafkaesque is a node.js client for Apache Kafka supporting upwards of v0.8 of the Kafka protocol only. Kafkaesque does not require any connection to zookeeper, rather it uses the kafka metadata protocol request to determine how it should best connect to the cluster. You need only provide Kafkaesque with the details of a single broker in any Kafka cluster and it will figure out the rest.
-
-The current 0.8 release of Kafka does not appear to support the full protocol set as described here: [https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol). Specifically the offset/commit/fetch API.
-
-Kafkaesque will uses API as opposed to reading meta commit information from zookeeper when it is full supported in Kafka.
-
-## Note
-Kafkaesque has an implementation for the offset fetch/commit API, this is not funcitonal in the .8.x Kafka releases. Expected in .9.x release.
+kafkaesque is a node.js client for Apache Kafka. This client supports v0.8.1 and upwards of the Kafka protocol. Kafkaesque does not require any connection to zookeeper as it uses the kafka [wire protocol](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol) to determine how it should best connect and manage connections to the cluster. You need only provide Kafkaesque with the details of a single broker in any Kafka cluster and it will figure out the rest.
 
 ## Prerequisites
-You will need to install Apache Kafka 0.8.x or greater.
+You will need to install Apache Kafka 0.8.1 or greater.
 
 ## Installation
 
@@ -23,84 +18,64 @@ npm install kafkaesque
 
 Produce example:
 
+```javascript
+// create a kafkaesque client, providing at least one broker
+var kafkaesque = require('kafkaesque')({
+  brokers: [{host: 'localhost', port: 9092}]
+});
+kafkaesque.produce('testing', 'message 1');
 ```
+
+Simple Consumer example:
+In the following we create a 'simple consumer' (in kafka terminology). this is a consumer which consumes from specified partitions, not auto assigned partitions
+
+```javascript
 // create a kafkaesqe client, providing at least one broker
 var kafkaesque = require('kafkaesque')({
-  brokers: [{host: 'localhost', port: 9092}],
-  clientId: 'MrFlibble',
-  maxBytes: 2000000
+  brokers: [{host: 'localhost', port: 9092}]
 });
+kafkaesque.poll({topic: 'testing', partition: 0} poll);
 
-// tearup the client
-kafkaesque.tearUp(function() {
-  // send two messages to the testing topic
-  kafkaesque.produce({topic: 'testing', partition: 0},
-                     ['wotcher mush', 'orwlight geezer'],
-                     function(err, response) {
-    // shutdown connection
-    console.log(response);
-    kafkaesque.tearDown();
+function poll (err, kafka) {
+  // handle each message
+  kafka.on('message', function(message, commit) {
+    console.log(JSON.stringify(message));
+    // once a message has been successfull handled, call commit to advance this
+    // consumers position in the topic / parition
+    commit();
   });
-});
-```
 
-Consume example:
-
-```
-// create a kafkaesqe client, providing at least one broker
-var kafkaesque = require('kafkaesque')({
-  brokers: [{host: 'localhost', port: 9092}],
-  clientId: 'fish',
-  maxBytes: 2000000
-});
-
-// tearup the client
-kafkaesque.tearUp(function() {
-  // poll the testing topic, kafakesque will determine the lead broker for this
-  // partition / topic pairing and will emit messages as they become available
-  // kafakesque will maintain the read position on the topic based on calls to
-  // commit()
-  kafkaesque.poll({topic: 'testing', partition: 0},
-                  function(err, kafka) {
-    // handle each message
-    kafka.on('message', function(message, commit) {
-      console.log(JSON.stringify(message));
-      // once a message has been successfull handled, call commit to advance this
-      // consumers position in the topic / parition
-      commit();
-    });
-    // report errors
-    kafka.on('error', function(error) {
-      console.log(JSON.stringify(error));
-    });
+  // report errors
+  kafka.on('error', function(error) {
+    console.log(JSON.stringify(error));
   });
-});
+}
 ```
 
 ## Samples
-Provided under the samples folder. All of the samples assume a kafka installation on localhost and require that you have created a topic 'testing' on your cluster.
+Provided under the samples folder. All of the samples assume a kafka installation on localhost and unless stated otherwise they require that you have created a topic 'testing' on your cluster.
 
-````
+
+The following will return metadata information on the topic 'testing'.
+```bash
 cd samples
 node metadata.js
-````
+```
 
-Will return metadata information on the topic testing
 
-````
+
+The following will post two messages to the 'testing' topic.
+```bash
 node produce.js
-````
+```
 
-Will post two messages to the testing topic
-
-````
-node fetch.js
-````
-
-Will consume messages from the testing topic. Note that the consume stores its position in the kafka commit log using the commit/offset/fetch API.
+The following will fetch messages from the beginning for the 0 partition in the 'testing' topic.
+```bash
+node simple-fetch-from-beginning.js
+```
 
 
-## Reference
+## API
 
 * Configuration
 	* brokers - array of one or more kafka brokers in the format { host: … , Port: …}
@@ -128,5 +103,22 @@ Will consume messages from the testing topic. Note that the consume stores its p
     *  maxWait - the maximum poll wait time, if unspecified defaults to 5 seconds
     *   minBytes - the minimum bytes that should be available before returning, if unspecified defaults to 50 bytes
 
+## Contributing
+
+This module encourages open participation. If you feel you can help in any way, or discover any Issues, feel free to [create an issue][issue] or [create a pull request][pr]!
+
+If you wish to read more on our guidelines, feel free to checkout the concise [contribution file][contrib]
+
 ## Support
-Hope that this code is useful, please feel free to get in touch if you need help or support: @pelger
+
+This project is kindly sponsored by [nearForm](http://www.nearform.com).
+
+We hope that this code is useful, please feel free to get in touch if you need help or support: @pelger or @thekemkid.
+
+## License
+Copyright Pelger and other contributors 2013, Licensed under [MIT][].
+
+[issue]: https://github.com/pelger/kafkaesque/issues
+[pr]:https://github.com/peleger/kafkaesque/pulls
+[MIT]: ./LICENSE
+[contrib]: ./CONTRIBUTING.md
