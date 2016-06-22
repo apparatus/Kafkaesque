@@ -26,7 +26,7 @@ describe('fetch test', function(){
   });
 
 
-  it('should correclty encode a fetch request', function(done){
+  it('should correctly encode a fetch request', function(done){
     var msg = fetch.encode()
                    .correlation(1234)
                    .client('Mr Flibble')
@@ -48,4 +48,3 @@ describe('fetch test', function(){
     done();
   });
 });
-

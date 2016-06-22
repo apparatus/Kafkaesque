@@ -26,7 +26,7 @@ describe('produce test', function(){
   });
 
 
-  it('should correclty encode a produce request', function(done){
+  it('should correctly encode a produce request', function(done){
     var msg = produce.encode()
                      .correlation(1234)
                      .client('Mr Flibble')

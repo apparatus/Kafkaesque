@@ -15,30 +15,30 @@
 'use strict';
 
 var assert  = require('chai').assert;
-var offset = require('../../../../lib/message/request/offsetFetch');
+var heartbeat = require('../../../../lib/message/request/heartbeat');
 var hexy = require('hexy');
 
 
-describe('offset fetch test', function(){
+describe('heartbeat test', function(){
 
   beforeEach(function(done) {
     done();
   });
 
 
-  it('should correclty encode an offset request', function(done){
-    var msg = offset.encode()
-                    .correlation(1234)
-                    .client('Mr Flibble')
-                    .group('Motorhead')
-                    .topic('vole-frobulation')
-                    .partition(0)
-                    .end();
+  it('should correctly encode a heartbeat request', function(done){
+    var msg = heartbeat.encode()
+                           .correlation(123)
+                           .client('testClient')
+                           .group('group1')
+                           .generation(5)
+                           .member('pingpong')
+                           .end();
 
-    var expected = '00000000: 0009 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
-                   '00000010: 6262 6c65 0009 4d6f 746f 7268 6561 6400  bble..Motorhead.\n' +
-                   '00000020: 0000 0100 1076 6f6c 652d 6672 6f62 756c  .....vole-frobul\n' +
-                   '00000030: 6174 696f 6e00 0000 0100 0000 00         ation........\n';
+    var expected =  '00000000: 000c 0000 0000 007b 000a 7465 7374 436c  .......{..testCl\n' +
+                    '00000010: 6965 6e74 0006 6772 6f75 7031 0000 0005  ient..group1....\n' +
+                    '00000020: 0008 7069 6e67 706f 6e67                 ..pingpong\n'
+    
     assert.equal(hexy.hexy(msg), expected);
     done();
   });
