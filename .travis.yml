@@ -6,8 +6,9 @@ node_js:
   - "iojs-v1"
   - "iojs-v2"
   - "iojs-v3"
-  - "4.0"
-  - "6.0"
+  - "4"
+  - "6"
+  - "node"
 
 script:
 - npm run test
