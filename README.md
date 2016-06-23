@@ -64,7 +64,7 @@ var kafkaesque = require('kafkaesque')({
 });
 
 // subscribe to a partitioned topic
-// this topic can have a large number of partitions, but using kafkaesque, 
+// this topic can have a large number of partitions, but using kafkaesque,
 // these can be split evenly between members of the group.
 kafkaesque.subscribe('a-partitioned-topic');
 
@@ -73,7 +73,7 @@ kafkaesque.connect(function (err, kafka) {
   if (err) {
      throw new Error('problem connecting to auto managed kafka cluster' + err);
   }
- 
+
   // handle each message
   kafka.on('message', function(message, commit) {
     console.log(message);
@@ -108,7 +108,7 @@ var kafkaesque = require('kafkaesque')(configObj);
 ### `kafkaesque` methods
 
 * `kafkaesque.produce(params, message(s), cb)` - send messages to kafka
-	* `params` - Either a `String` or an `Object`. 
+	* `params` - Either a `String` or an `Object`.
 		* If a `String` - this is the topic to publish to. Kafkaesque internally chooses the partition in this case. * If an `Object`- This have the following properties:
 			* `params.topic` - The topic to publish to. REQUIRED IF PARAMS = OBJECT.
 			* `params.partition` - The partition to publish to. If undefined then Kafkaesque internally chooses the partition.
@@ -151,7 +151,7 @@ var kafkaesque = require('kafkaesque')(configObj);
 			* `rebalance.start` - Emitted when the kafka group needs to rebalance/reassign the subscribed topic partitions to members.
 			* `rebalance.end` - Emitted after rebalancing.
 			* `electedLeader` - Emitted when elected leader, and your client must assign partitions. Don't worry though, kafkaesque manages this for you.
-			
+
 * `kafkaesque.disconnect(cb)` - Shut down internal connections to the kafka cluster gracefully and let the group coordinator know you're leaving so the group can resync sooner and no longer need to wait for your client to timeout.
 
 * `kafkaesque.subscribe(topics)` - subscribe to auto-managed topics.
@@ -164,13 +164,13 @@ var kafkaesque = require('kafkaesque')(configObj);
 	* `topic` - the topic to return metadata on.
 
 * `kafkaesque.listGroups(cb)` - list all groups.
-	* `cb` - Callback function. Arguments: `function(err, res)` 
+	* `cb` - Callback function. Arguments: `function(err, res)`
 		* `err` - any error encountered when trying to list all groups.
 		* `res` - The results.
 
 * `kafkaesque.describeGroups(groups, cb)` - describe each group here.
 	*	`groups` - A `String` or an `Array` of `String`s representing group names.
-	* `cb` - Callback function. Arguments: `function(err, res)` 
+	* `cb` - Callback function. Arguments: `function(err, res)`
 		* `err` - any error encountered when trying to describe the groups.
 		* `res` - The results.
 
@@ -178,7 +178,7 @@ var kafkaesque = require('kafkaesque')(configObj);
 
 * `kafkaesque.tearUp(cb)` - tear up connection to the kafka cluster. _DEPRECATED_. Should no longer be neccessary.
 
-## Samples //To be updated
+## Samples
 Provided under the samples folder. All of the samples assume a kafka installation on localhost and unless stated otherwise they require that you have created a topic 'testing' on your cluster.
 
 
@@ -188,14 +188,24 @@ cd samples
 node metadata.js
 ```
 
-The following will post two messages to the 'testing' topic.
+The following will post messages to the 'testing' topic.
 ```bash
 node produce.js
 ```
 
-The following will fetch messages from the beginning for the 0 partition in the 'testing' topic.
+The following will fetch messages in the 'testing' topic, after the latest commited offset for members of this group.
 ```bash
-node simple-fetch-from-beginning.js
+node fetch.js
+```
+
+The following will fetch messages from the beginning for the 'testing' topic.
+```bash
+node fetchFromStart.js
+```
+
+The following will join an auto-managed group, and subscribe to the 'testing' topic in that group.
+```bash
+node auto-assigned-member.js
 ```
 
 ## Contributing
