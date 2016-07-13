@@ -3,7 +3,7 @@
 [![NPM](https://nodei.co/npm/kafkaesque.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/kafkaesque/)
 
 ## A Node.js Kafka client
-kafkaesque is a node.js client for Apache Kafka. This client supports v0.8.1 and upwards of the Kafka protocol. Kafkaesque does not require any connection to zookeeper as it uses the kafka [wire protocol](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol) to determine how it should best connect and manage connections to the cluster. You need only provide Kafkaesque with the details of a single broker in any Kafka cluster and it will figure out the rest.
+kafkaesque is a node.js client for Apache Kafka. This client supports v0.8.1 and upwards of the Kafka protocol. Kafkaesque does not require any connection to zookeeper as it uses the kafka [wire protocol][wire-protocol] to determine how it should best connect and manage connections to the cluster. You need only provide Kafkaesque with the details of a single broker in any Kafka cluster and it will figure out the rest.
 
 Kafkaesque gives you fine grained control over what topics and partitions you connect to and it gives a very easy to use interface to let this module auto-assign partitions for you. This module should be useful for Kafka beginners and veterans alike!
 
@@ -221,8 +221,9 @@ This project is kindly sponsored by [nearForm](http://www.nearform.com).
 We hope that this code is useful, please feel free to get in touch if you need help or support: @pelger or @thekemkid.
 
 ## License
-Copyright Peter Elger and other contributors 2013, Licensed under [MIT][].
+Copyright Peter Elger and other contributors 2013 - 2016, Licensed under [MIT][].
 
+[wire-protocol]: https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol
 [issue]: https://github.com/pelger/kafkaesque/issues
 [pr]:https://github.com/peleger/kafkaesque/pulls
 [MIT]: ./LICENSE

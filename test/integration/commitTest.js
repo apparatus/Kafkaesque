@@ -14,9 +14,7 @@
 
 'use strict';
 
-// var assert  = require('chai').assert;
 var client;
-
 
 describe('commit test', function(){
 
@@ -38,11 +36,8 @@ describe('commit test', function(){
   it('should connect to Kafka and execute a commit request', function(done){
     this.timeout(1000000);
     client.offsetCommit({group: 'ni', topic: 'testing123', partition: 0, offset: 5}, function(err, response) {
-      //assert(null === err);
       console.log(JSON.stringify(response));
       done();
     });
   });
 });
-
-
