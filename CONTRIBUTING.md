@@ -19,6 +19,6 @@ Code changes are welcome and should follow the guidelines below.
 
 [Adapted with permission from senecajs.](https://github.com/senecajs/seneca/)
 
-[newIssue]: https://github.com/pelger/kafkaesque/issues/new
+[newIssue]: https://github.com/apparatus/kafkaesque/issues/new
 [pr]: http://help.github.com/send-pull-requests/
-[master]: https://github.com/pelger/kafkaesque/tree/master
+[master]: https://github.com/apparatus/kafkaesque/tree/master
