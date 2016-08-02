@@ -223,12 +223,12 @@ We hope that this code is useful, please feel free to get in touch if you need h
 ## License
 Copyright Peter Elger and other contributors 2013 - 2016, Licensed under [MIT][].
 
-[travis-build-link]: https://travis-ci.org/thekemkid/Kafkaesque
-[travis-build-stat-svg]: https://travis-ci.org/thekemkid/Kafkaesque.svg?branch=group-membership
+[travis-build-link]: https://travis-ci.org/apparatus/Kafkaesque
+[travis-build-stat-svg]: https://travis-ci.org/apparatus/Kafkaesque.svg?branch=group-membership
 [npm-link]: https://nodei.co/npm/kafkaesque/
 [npm-download-stat-svg]: https://nodei.co/npm/kafkaesque.png?downloads=true&downloadRank=true&stars=true
 [wire-protocol]: https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol
-[issue]: https://github.com/pelger/kafkaesque/issues
-[pr]: https://github.com/peleger/kafkaesque/pulls
+[issue]: https://github.com/apparatus/kafkaesque/issues
+[pr]: https://github.com/apparatus/kafkaesque/pulls
 [MIT]: ./LICENSE
 [contrib]: ./CONTRIBUTING.md
