@@ -14,30 +14,30 @@
 
 'use strict';
 
-var client;
+var assert  = require('chai').assert;
+var groupCoord = require('../../../../lib/message/request/groupCoordinator');
+var hexy = require('hexy');
 
-describe('commit test', function(){
+
+describe('groupCoordinator test', function(){
 
   beforeEach(function(done) {
-    this.timeout(1000000);
-    var options = {
-      host: 'localhost',
-      port: 9092,
-      clientId: 'fish'
-    };
-    client = require('../../lib/api')(options);
-    client.tearUp(function(err) {
-      console.log(err);
-      done();
-    });
+    done();
   });
 
 
-  it('should connect to Kafka and execute a commit request', function(done){
-    this.timeout(1000000);
-    client.offsetCommit({group: 'ni', topic: 'testing123', partition: 0, offset: 5}, function(err, response) {
-      console.log(JSON.stringify(response));
-      done();
-    });
+  it('should correctly encode a groupCoordinator request', function(done){
+    var msg = groupCoord.encode()
+                        .correlation(123)
+                        .client('testClient')
+                        .group('group1')
+                        .end();
+
+    var expected =  '00000000: 000a 0000 0000 007b 000a 7465 7374 436c  .......{..testCl\n' +
+                    '00000010: 6965 6e74 0006 6772 6f75 7031            ient..group1\n'
+
+
+    assert.equal(hexy.hexy(msg), expected);
+    done();
   });
 });

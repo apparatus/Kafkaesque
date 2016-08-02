@@ -14,26 +14,28 @@
 
 'use strict';
 
-var common = require('./common');
+var assert  = require('chai').assert;
+var listGroups = require('../../../../lib/message/request/listGroups');
+var hexy = require('hexy');
 
-var replica = function() {
-  var buf = this.buf;
-  buf.appendUInt32BE(0xffffffff);
-  return this;
-};
 
-var maxOffsets = function() {
-  var buf = this.buf;
-  buf.appendUInt32BE(0x0fffffff);
-  return this;
-};
+describe('listGroups test', function(){
 
-/**
- * Encode a kafka offset commit request - assuming a single topic and partition
- */
-exports.encode = function() {
-  var ret = common.encode(common.OFFSET_API);
-  ret.replica = replica;
-  ret.maxOffsets = maxOffsets;
-  return ret;
-};
+  beforeEach(function(done) {
+    done();
+  });
+
+
+  it('should correctly encode a listGroups request', function(done){
+    var msg = listGroups.encode()
+                        .correlation(1234)
+                        .client('Mr Flibble')
+                        .end();
+
+    var expected = '00000000: 0010 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
+                   '00000010: 6262 6c65                                bble\n';
+
+    assert.equal(hexy.hexy(msg), expected);
+    done();
+  });
+});

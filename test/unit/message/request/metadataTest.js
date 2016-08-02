@@ -27,7 +27,22 @@ describe('metadata test', function(){
   });
 
 
-  it('should correclty encode a metadata request', function(done){
+  it('should correclty encode a metadata request with a single topic', function(done){
+    var msg = meta.encode()
+                  .correlation(1234)
+                  .client('Mr Flibble')
+                  .topic('fish')
+                  .end();
+
+    var expected = '00000000: 0003 0000 0000 04d2 000a 4d72 2046 6c69  .......R..Mr.Fli\n' +
+                   '00000010: 6262 6c65 0000 0001 0004 6669 7368       bble......fish\n';
+
+    assert.equal(hexy.hexy(msg), expected);
+    done();
+  });
+
+
+  it('should correclty encode a metadata request with multiple topics', function(done){
     var msg = meta.encode()
                   .correlation(1234)
                   .client('Mr Flibble')
@@ -58,4 +73,3 @@ describe('metadata test', function(){
     done();
   });
 });
-

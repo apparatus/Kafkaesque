@@ -15,31 +15,30 @@
 'use strict';
 
 var assert  = require('chai').assert;
-var client;
+var leaveGroup = require('../../../../lib/message/request/leaveGroup');
+var hexy = require('hexy');
 
 
-describe('metadata test', function(){
+describe('leaveGroup test', function(){
 
   beforeEach(function(done) {
-    this.timeout(1000000);
-    var options = {
-      host: 'localhost',
-      port: 9092,
-      clientId: 'fish'
-    };
-    client = require('../../lib/api')(options);
-    client.tearUp(function(err) {
-      console.log(err);
-      done();
-    });
+    done();
   });
 
 
-  it('should connect to Kafka and execute a metadata request', function(done){
-    client.metadata(['testing123'], function(err, response) {
-      assert(null === err);
-      console.log(JSON.stringify(response, null, 2));
-      done();
-    });
+  it('should correctly encode a leaveGroup request', function(done){
+    var msg = leaveGroup.encode()
+                        .correlation(123)
+                        .client('testClient')
+                        .group('group1')
+                        .member('pingpong')
+                        .end();
+
+    var expected =  '00000000: 000d 0000 0000 007b 000a 7465 7374 436c  .......{..testCl\n' +
+                    '00000010: 6965 6e74 0006 6772 6f75 7031 0008 7069  ient..group1..pi\n' +
+                    '00000020: 6e67 706f 6e67                           ngpong\n'
+
+    assert.equal(hexy.hexy(msg), expected);
+    done();
   });
 });

@@ -15,31 +15,30 @@
 'use strict';
 
 var assert  = require('chai').assert;
-var client;
+var describeGroup = require('../../../../lib/message/request/describeGroups');
+var hexy = require('hexy');
 
 
-describe('metadata test', function(){
+describe('describeGroups test', function(){
 
   beforeEach(function(done) {
-    this.timeout(1000000);
-    var options = {
-      host: 'localhost',
-      port: 9092,
-      clientId: 'fish'
-    };
-    client = require('../../lib/api')(options);
-    client.tearUp(function(err) {
-      console.log(err);
-      done();
-    });
+    done();
   });
 
 
-  it('should connect to Kafka and execute a metadata request', function(done){
-    client.metadata(['testing123'], function(err, response) {
-      assert(null === err);
-      console.log(JSON.stringify(response, null, 2));
-      done();
-    });
+  it('should correctly encode a describeGroup request', function(done){
+    var msg = describeGroup.encode()
+                           .correlation(123)
+                           .client('testClient')
+                           .groups(['group1', 'group2'])
+                           .end();
+
+    var expected =  '00000000: 000f 0000 0000 007b 000a 7465 7374 436c  .......{..testCl\n' +
+                    '00000010: 6965 6e74 0000 0002 0006 6772 6f75 7031  ient......group1\n' +
+                    '00000020: 0006 6772 6f75 7032                      ..group2\n';
+
+    
+    assert.equal(hexy.hexy(msg), expected);
+    done();
   });
 });
