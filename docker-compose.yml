@@ -1,0 +1,8 @@
+kafkaesque:
+  build: ./docker
+  ports:
+    - "9092:9092"
+  environment:
+    KAFKA_ADVERTISED_HOST_NAME: localhost
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
