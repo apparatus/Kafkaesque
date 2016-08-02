@@ -224,7 +224,7 @@ We hope that this code is useful, please feel free to get in touch if you need h
 Copyright Peter Elger and other contributors 2013 - 2016, Licensed under [MIT][].
 
 [travis-build-link]: https://travis-ci.org/apparatus/Kafkaesque
-[travis-build-stat-svg]: https://travis-ci.org/apparatus/Kafkaesque.svg?branch=group-membership
+[travis-build-stat-svg]: https://travis-ci.org/apparatus/Kafkaesque.svg?branch=master
 [npm-link]: https://nodei.co/npm/kafkaesque/
 [npm-download-stat-svg]: https://nodei.co/npm/kafkaesque.png?downloads=true&downloadRank=true&stars=true
 [wire-protocol]: https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol
