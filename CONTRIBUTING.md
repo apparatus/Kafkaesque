@@ -15,7 +15,7 @@ Code changes are welcome and should follow the guidelines below.
 * Fix the issue ensuring that your code passing the linting test.
 * Add tests for your new code ensuring that it is fully tested.
 * Ensure all tests pass by running `grunt build`
-* [Pull requests][pr] should be made to the [master branch]().
+* [Pull requests][pr] should be made to the [master branch][master].
 
 [Adapted with permission from senecajs.](https://github.com/senecajs/seneca/)
 
