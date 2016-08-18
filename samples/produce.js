@@ -9,14 +9,14 @@ var kafkaesque = require('../lib/kafkaesque')({brokers: [{host: 'localhost', por
 // specify the topic and partition to produce to,
 // produce the array of strings
 // callback optional
-consumer.produce({topic: 'testing', partition: 0}, ['message form 1'], function(err, res) {})
+kafkaesque.produce({topic: 'testing', partition: 0}, ['message form 1'], function(err, res) {})
 
 // specify the topic to produce to,
 // kafkaesque will choose the partition to produce to (round-robin style)
 // produce the string
-consumer.produce({topic: 'testing'}, 'message form 2')
+kafkaesque.produce({topic: 'testing'}, 'message form 2')
 
 // specify the topic to produce to,
 // kafkaesque will choose the partition to produce to (round-robin style)
 // produce the string
-consumer.produce('testing', 'message form 3')
+kafkaesque.produce('testing', 'message form 3')
